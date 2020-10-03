@@ -22,3 +22,6 @@
 .hovered {
   font-size: 62px;
 }
+.clicked {
+  color: #db7c4d;
+}

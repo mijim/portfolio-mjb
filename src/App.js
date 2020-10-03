@@ -86,6 +86,7 @@ function App() {
   const [viewRotation, setViewRotation] = useState(initRotation);
   const [sceneLoaded, setSceneLoaded] = useState(false);
   const [hoveredSection, setHoveredSection] = useState("");
+  const [clickedSection, setClickedSection] = useState("");
 
   useEffect(() => {
     if (mainScene) {
@@ -170,7 +171,7 @@ function App() {
       object.name.indexOf("Assembly-7") === -1
     ) {
       document.body.style.cursor = "pointer";
-      if (hoveredSection === "") {
+      if (hoveredSection === "" && clickedSection === "") {
         switch (object.name) {
           case "Assembly-8":
             setHoveredSection("contact");
@@ -198,6 +199,7 @@ function App() {
   };
 
   const handleClickSection = section => {
+    setClickedSection(section);
     switch (section) {
       case "projects":
         setViewPosition(projectsPos);
@@ -265,6 +267,7 @@ function App() {
       </Canvas>
       {sceneLoaded && (
         <Menu
+          currentSection={clickedSection}
           hoveredSection={hoveredSection}
           onClickSection={handleClickSection}
         />
