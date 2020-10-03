@@ -39,10 +39,44 @@ const initRotation = [
   2.20544313186807
 ];
 
+const projectsPos = [
+  -0.010578873576172786,
+  1.4729496355720053,
+  -0.20894175942057594
+];
+const projectsRot = [
+  -2.247876777984284,
+  1.4411851645229805,
+  2.2519935915275706
+];
+
+const contactPos = [
+  -0.40154128989215804,
+  1.5489796355717402,
+  0.780202785262715
+];
+
+const contactRot = [
+  -1.5822028354256448,
+  0.02557185801826034,
+  1.990423180100031
+];
+
+const aboutPos = [-0.25559730511247675, 1.7824296355719624, 0.3143418313611403];
+
+const aboutRot = [-0.2695999166321467, 0.7678853941471353, 0.1896349937533332];
+
+const linksPos = [-0.8568908418930415, 1.5354296355721382, -1.0320761973641777];
+
+const linksRot = [
+  -1.5707962773736786,
+  -1.8397984633163056e-10,
+  -0.003722672238629215
+];
+
 const edgesMaterial = new THREE.LineBasicMaterial({
-  color: 0x000000,
-  linewidth: 10,
-  linecap: "square"
+  color: 0xf5deb3,
+  linewidth: 10
 });
 
 function App() {
@@ -58,14 +92,14 @@ function App() {
       const loader = new GLTFLoader();
       loader.load("/models/portfolio_scene.glb", object => {
         mainScene.children.push(object.scene);
-        object.scene.children[0].children.forEach(child => {
-          if (
-            child.name.indexOf("Assembly") > -1 &&
-            child.name.indexOf("Assembly-7") === -1
-          ) {
-            //addEdges(mainScene, child, `${child.name}-edges`);
-          }
-        });
+        // object.scene.children[0].children.forEach(child => {
+        //   if (
+        //     child.name.indexOf("Assembly") > -1 &&
+        //     child.name.indexOf("Assembly-7") === -1
+        //   ) {
+        //     addEdges(mainScene, child, `${child.name}-edges`);
+        //   }
+        // });
         setTimeout(() => {
           setViewPosition(initPos2);
           setViewRotation(initRotation2);
@@ -74,6 +108,16 @@ function App() {
       });
     }
   }, [mainScene]);
+
+  useEffect(() => {
+    const handleClick = () => {
+      if (hoveredSection !== "") {
+        handleClickSection(hoveredSection);
+      }
+    };
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, [hoveredSection]);
 
   // useEffect(() => {
   //   if (mainCamera) {
@@ -153,6 +197,30 @@ function App() {
     }
   };
 
+  const handleClickSection = section => {
+    switch (section) {
+      case "projects":
+        setViewPosition(projectsPos);
+        setViewRotation(projectsRot);
+        break;
+      case "links":
+        setViewPosition(linksPos);
+        setViewRotation(linksRot);
+        break;
+      case "about":
+        setViewPosition(aboutPos);
+        setViewRotation(aboutRot);
+        break;
+      case "contact":
+        setViewPosition(contactPos);
+        setViewRotation(contactRot);
+        break;
+      default:
+        setViewPosition(initPos2);
+        setViewRotation(initRotation2);
+    }
+  };
+
   return (
     <div className="App">
       <Loader loaded={sceneLoaded} />
@@ -195,7 +263,12 @@ function App() {
           position={[0.8, 1, 0]}
         />
       </Canvas>
-      {sceneLoaded && <Menu hoveredSection={hoveredSection} />}
+      {sceneLoaded && (
+        <Menu
+          hoveredSection={hoveredSection}
+          onClickSection={handleClickSection}
+        />
+      )}
     </div>
   );
 }

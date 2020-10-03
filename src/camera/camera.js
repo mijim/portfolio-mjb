@@ -109,6 +109,7 @@ const NavigationControls = props => {
         moveRight = false;
         break;
       default:
+        console.log("camera --> ", camera);
         moveForward = false;
     }
   };
@@ -135,13 +136,13 @@ const NavigationControls = props => {
     // });
     if (props.newViewPostion !== null && props.newViewRotation !== null) {
       gsap.to(camera.position, {
-        duration: 6,
+        duration: 2,
         x: props.newViewPostion[0],
         y: props.newViewPostion[1],
         z: props.newViewPostion[2]
       });
       gsap.to(camera.rotation, {
-        duration: 6,
+        duration: 2,
         x: props.newViewRotation[0],
         y: props.newViewRotation[1],
         z: props.newViewRotation[2]
@@ -207,9 +208,9 @@ const NavigationControls = props => {
       // }
       if (!moveUp || !moveDown) velocity.y = 0;
 
-      if (moveUp) velocity.y += 100.0;
+      if (moveUp) velocity.y += 10.0;
 
-      if (moveDown) velocity.y -= 100.0;
+      if (moveDown) velocity.y -= 10.0;
 
       controls.current.moveRight(-velocity.x * delta);
       controls.current.moveForward(-velocity.z * delta);

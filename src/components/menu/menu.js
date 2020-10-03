@@ -2,13 +2,14 @@ import React from "react";
 import "./menu.css";
 
 const Menu = props => {
-  const { hoveredSection } = props;
+  const { hoveredSection, onClickSection } = props;
   return (
     <div className="menu-container">
       <div
         className={`menu-section ${
           hoveredSection === "projects" ? "hovered" : ""
         }`}
+        onClick={() => onClickSection("projects")}
       >
         Proyectos
       </div>
@@ -16,6 +17,7 @@ const Menu = props => {
         className={`menu-section ${
           hoveredSection === "about" ? "hovered" : ""
         }`}
+        onClick={() => onClickSection("about")}
       >
         Sobre mí
       </div>
@@ -23,6 +25,7 @@ const Menu = props => {
         className={`menu-section ${
           hoveredSection === "contact" ? "hovered" : ""
         }`}
+        onClick={() => onClickSection("contact")}
       >
         Contacto
       </div>
@@ -30,6 +33,7 @@ const Menu = props => {
         className={`menu-section ${
           hoveredSection === "links" ? "hovered" : ""
         }`}
+        onClick={() => onClickSection("links")}
       >
         Enlaces
       </div>
