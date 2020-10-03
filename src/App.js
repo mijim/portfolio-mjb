@@ -1,13 +1,44 @@
-import React, { useEffect, useState, useRef } from "react";
-import logo from "./logo.svg";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Canvas, pointLight } from "react-three-fiber";
+import { Canvas } from "react-three-fiber";
 import * as THREE from "three";
-import { OrbitControls, Box } from "drei";
-const defaultMaterial = new THREE.MeshStandardMaterial({
-  color: 0xff6666
-});
+import NavigationControls from "./camera/camera";
+import Loader from "./components/loader/loader";
+import Menu from "./components/menu/menu";
+
+/**
+ Assembly - sections:
+
+ contacto:
+ Assembly-8 
+
+ proyectos:
+ Assembly-8_2
+ Assembly-11_1
+ Assembly-14
+
+ enlaces:
+ Assembly-8_1
+
+ sobre mi:
+ Assembly-12
+ */
+
+const initPos2 = [2.815255628617398, 2.317359635567619, 0.6678043001467961];
+const initRotation2 = [
+  -0.5379590106574698,
+  0.999354090194259,
+  0.46513659438111615
+];
+
+const initPos = [4.431716337943775, 5.037659635568481, -3.0789426917704303];
+const initRotation = [
+  -1.9971314317087887,
+  0.6647914739833739,
+  2.20544313186807
+];
+
 const edgesMaterial = new THREE.LineBasicMaterial({
   color: 0x000000,
   linewidth: 10,
@@ -15,39 +46,53 @@ const edgesMaterial = new THREE.LineBasicMaterial({
 });
 
 function App() {
+  const [mainCamera, setMainCamera] = useState(null);
   const [mainScene, setMainScene] = useState(null);
-  const controlsRef = useRef(null);
+  const [viewPosition, setViewPosition] = useState(initPos);
+  const [viewRotation, setViewRotation] = useState(initRotation);
+  const [sceneLoaded, setSceneLoaded] = useState(false);
 
   useEffect(() => {
     if (mainScene) {
       const loader = new GLTFLoader();
-      console.log("controlsRef --> ", controlsRef);
       loader.load("/models/portfolio_scene.glb", object => {
-        console.log("mainScene --> ", mainScene);
-        console.log("object --> ", object);
-        object.scene.position.set(-2.5, -0.6, 1.5);
-        object.scene.castShadow = true;
-        object.scene.receiveShadow = true;
-        setCastShadow(object.scene);
-        addEdges(mainScene, object.scene);
         mainScene.children.push(object.scene);
+        object.scene.children[0].children.forEach(child => {
+          if (
+            child.name.indexOf("Assembly") > -1 &&
+            child.name.indexOf("Assembly-7") === -1
+          ) {
+            addEdges(mainScene, child, `${child.name}-edges`);
+          }
+        });
+        setTimeout(() => {
+          setViewPosition(initPos2);
+          setViewRotation(initRotation2);
+          setSceneLoaded(true);
+        }, 1000);
       });
     }
   }, [mainScene]);
 
-  const setCastShadow = object => {
-    if (object.castShadow === false) {
-      object.castShadow = true;
+  useEffect(() => {
+    if (mainCamera) {
+      const handleMove = ev => {
+        const xValue = ev.clientX / 50000;
+        const yValue = ev.clientY / 50000;
+        if (initPos[0] !== viewRotation[0]) {
+          mainCamera.rotation.set(
+            viewRotation[0] - xValue,
+            viewRotation[1] - yValue,
+            viewRotation[2]
+          );
+        }
+      };
+      document.addEventListener("mousemove", handleMove);
+      return () => document.removeEventListener("mousemove", handleMove);
     }
-    // if (object.receiveShadow === false) {
-    //   object.receiveShadow = true;
-    // }
-    if (object.children) {
-      object.children.forEach(child => setCastShadow(child));
-    }
-  };
+  }, [mainCamera, viewRotation]);
 
-  const addEdges = (scene, object) => {
+  const addEdges = (scene, object, name) => {
     if (object.geometry) {
       const edges = new THREE.EdgesGeometry(object.geometry);
       const edgesMesh = new THREE.LineSegments(edges, edgesMaterial);
@@ -62,44 +107,70 @@ function App() {
       scene.children.push(edgesMesh);
     }
     if (object.children) {
-      object.children.forEach(child => addEdges(scene, child));
+      object.children.forEach(child => addEdges(scene, child, name));
+    }
+  };
+
+  const handleHover = object => {
+    if (
+      object &&
+      object.name.indexOf("Assembly") === -1 &&
+      object.parent &&
+      object.name.indexOf("Assembly-7") === -1
+    ) {
+      handleHover(object.parent);
+    } else if (
+      object &&
+      object.name.indexOf("Assembly") > -1 &&
+      object.name.indexOf("Assembly-7") === -1
+    ) {
+      //TODO SHOW SECTION
+      document.body.style.cursor = "pointer";
+    } else {
+      document.body.style.cursor = "inherit";
     }
   };
 
   return (
     <div className="App">
+      <Loader loaded={sceneLoaded} />
       <Canvas
         id="main-canvas"
         camera={{
-          position: [
-            -1.8319611968285672,
-            1.8641761009840985,
-            4.6711600969489524
-          ],
+          position: [3.2158506873285586, 3.644959635571787, -1],
           fov: 50,
-          near: 0.001,
-          rotation: [0, 0, 0]
+          near: 0.001
         }}
         onCreated={context => setMainScene(context.scene)}
         shadowMap
       >
-        <OrbitControls ref={controlsRef} />
-        {/* <ambientLight /> */}
-        <pointLight
-          position={[-1.7, 1, 1.2]}
-          intensity={0.6}
-          castShadow
-          receiveShadow
+        <NavigationControls
+          newViewPostion={viewPosition}
+          newViewRotation={viewRotation}
+          editMode={true}
+          setCamera={camera => setMainCamera(camera)}
+          objects={
+            mainScene && mainScene.children[1]
+              ? mainScene.children[1].children
+              : null
+          }
+          onObjectHover={objects => {
+            if (objects) {
+              [objects[0]].forEach(object => {
+                handleHover(object.object);
+              });
+            } else {
+              document.body.style.cursor = "inherit";
+            }
+          }}
         />
-        <Box
-          scale={[3, 0.5, 3]}
-          position={[-1.7, -0.87, 1.2]}
-          rotation={[0, 0, 0]}
-          castShadow
-          receiveShadow
-          material={defaultMaterial}
+        <directionalLight
+          color={"#ffffff"}
+          intensity={1.2}
+          position={[0.8, 1, 0]}
         />
       </Canvas>
+      {sceneLoaded && <Menu />}
     </div>
   );
 }

@@ -30,7 +30,11 @@
   color: #61dafb;
 }
 canvas {
-  background: #333333;
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(106, 106, 106, 1) 100%
+  );
 }
 @keyframes App-logo-spin {
   from {
