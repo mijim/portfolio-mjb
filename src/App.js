@@ -51,6 +51,7 @@ function App() {
   const [viewPosition, setViewPosition] = useState(initPos);
   const [viewRotation, setViewRotation] = useState(initRotation);
   const [sceneLoaded, setSceneLoaded] = useState(false);
+  const [hoveredSection, setHoveredSection] = useState("");
 
   useEffect(() => {
     if (mainScene) {
@@ -62,7 +63,7 @@ function App() {
             child.name.indexOf("Assembly") > -1 &&
             child.name.indexOf("Assembly-7") === -1
           ) {
-            addEdges(mainScene, child, `${child.name}-edges`);
+            //addEdges(mainScene, child, `${child.name}-edges`);
           }
         });
         setTimeout(() => {
@@ -74,23 +75,23 @@ function App() {
     }
   }, [mainScene]);
 
-  useEffect(() => {
-    if (mainCamera) {
-      const handleMove = ev => {
-        const xValue = ev.clientX / 50000;
-        const yValue = ev.clientY / 50000;
-        if (initPos[0] !== viewRotation[0]) {
-          mainCamera.rotation.set(
-            viewRotation[0] - xValue,
-            viewRotation[1] - yValue,
-            viewRotation[2]
-          );
-        }
-      };
-      document.addEventListener("mousemove", handleMove);
-      return () => document.removeEventListener("mousemove", handleMove);
-    }
-  }, [mainCamera, viewRotation]);
+  // useEffect(() => {
+  //   if (mainCamera) {
+  //     const handleMove = ev => {
+  //       const xValue = ev.clientX / 50000;
+  //       const yValue = ev.clientY / 50000;
+  //       if (initPos[0] !== viewRotation[0]) {
+  //         mainCamera.rotation.set(
+  //           viewRotation[0] - xValue,
+  //           viewRotation[1] - yValue,
+  //           viewRotation[2]
+  //         );
+  //       }
+  //     };
+  //     document.addEventListener("mousemove", handleMove);
+  //     return () => document.removeEventListener("mousemove", handleMove);
+  //   }
+  // }, [mainCamera, viewRotation]);
 
   const addEdges = (scene, object, name) => {
     if (object.geometry) {
@@ -124,9 +125,30 @@ function App() {
       object.name.indexOf("Assembly") > -1 &&
       object.name.indexOf("Assembly-7") === -1
     ) {
-      //TODO SHOW SECTION
       document.body.style.cursor = "pointer";
+      if (hoveredSection === "") {
+        switch (object.name) {
+          case "Assembly-8":
+            setHoveredSection("contact");
+            break;
+          case "Assembly-8_2":
+          case "Assembly-11_1":
+          case "Assembly-14":
+            setHoveredSection("projects");
+            break;
+          case "Assembly-8_1":
+            setHoveredSection("links");
+            break;
+          case "Assembly-12":
+            setHoveredSection("about");
+            break;
+          default:
+        }
+      }
     } else {
+      if (hoveredSection !== "") {
+        setHoveredSection("");
+      }
       document.body.style.cursor = "inherit";
     }
   };
@@ -161,6 +183,9 @@ function App() {
               });
             } else {
               document.body.style.cursor = "inherit";
+              if (hoveredSection !== "") {
+                setHoveredSection("");
+              }
             }
           }}
         />
@@ -170,7 +195,7 @@ function App() {
           position={[0.8, 1, 0]}
         />
       </Canvas>
-      {sceneLoaded && <Menu />}
+      {sceneLoaded && <Menu hoveredSection={hoveredSection} />}
     </div>
   );
 }

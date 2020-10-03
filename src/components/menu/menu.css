@@ -18,6 +18,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.menu-section:hover {
+.menu-section:hover,
+.hovered {
   font-size: 62px;
 }
