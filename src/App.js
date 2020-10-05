@@ -84,15 +84,13 @@ function App() {
   const [sceneLoaded, setSceneLoaded] = useState(false);
   const [hoveredSection, setHoveredSection] = useState("");
   const [clickedSection, setClickedSection] = useState("");
-
-  const [hoveredArray, setHoveredArray] = useState([]);
   const hoveredGroup = useRef(null);
   const hoveredGroupAux = useRef(null);
 
   useEffect(() => {
     if (mainScene) {
       const loader = new GLTFLoader();
-      loader.load("/models/portfolio_scene.glb", object => {
+      loader.load("/models/portfolio_scene.gltf", object => {
         mainScene.children.push(object.scene);
         // object.scene.children[0].children.forEach(child => {
         //   if (
@@ -106,7 +104,6 @@ function App() {
           setViewPosition(initPos2);
           setViewRotation(initRotation2);
           setSceneLoaded(true);
-          console.log("mainScene --> ", mainScene);
         }, 1000);
       });
     }
