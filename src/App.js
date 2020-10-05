@@ -7,6 +7,7 @@ import NavigationControls from "./camera/camera";
 import Loader from "./components/loader/loader";
 import Menu from "./components/menu/menu";
 import { EffectComposer, Outline } from "@react-three/postprocessing";
+import SectionContainer from "./components/section-container/section-container";
 
 /**
  Assembly - sections:
@@ -84,6 +85,8 @@ function App() {
   const [sceneLoaded, setSceneLoaded] = useState(false);
   const [hoveredSection, setHoveredSection] = useState("");
   const [clickedSection, setClickedSection] = useState("");
+  const [showSection, setShowSection] = useState(false);
+
   const hoveredGroup = useRef(null);
   const hoveredGroupAux = useRef(null);
 
@@ -204,7 +207,13 @@ function App() {
     }
   };
 
+  let transitionTimeout = null;
   const handleClickSection = section => {
+    clearTimeout(transitionTimeout);
+    setShowSection(false);
+    setTimeout(() => {
+      setShowSection(true);
+    }, 2000);
     setClickedSection(section);
     switch (section) {
       case "projects":
@@ -291,6 +300,7 @@ function App() {
           onClickSection={handleClickSection}
         />
       )}
+      <SectionContainer show={showSection}></SectionContainer>
     </div>
   );
 }
