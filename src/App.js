@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./App.css";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Canvas } from "react-three-fiber";
@@ -6,6 +6,7 @@ import * as THREE from "three";
 import NavigationControls from "./camera/camera";
 import Loader from "./components/loader/loader";
 import Menu from "./components/menu/menu";
+import { EffectComposer, Outline } from "@react-three/postprocessing";
 
 /**
  Assembly - sections:
@@ -66,13 +67,9 @@ const aboutPos = [-0.25559730511247675, 1.7824296355719624, 0.3143418313611403];
 
 const aboutRot = [-0.2695999166321467, 0.7678853941471353, 0.1896349937533332];
 
-const linksPos = [-0.8568908418930415, 1.5354296355721382, -1.0320761973641777];
+const linksPos = [-0.3490276898342644, 1.101469635568129, -1.392597431873884];
 
-const linksRot = [
-  -1.5707962773736786,
-  -1.8397984633163056e-10,
-  -0.003722672238629215
-];
+const linksRot = [-3.1282361997594617, 1.3512963700412088, 3.128556631729886];
 
 const edgesMaterial = new THREE.LineBasicMaterial({
   color: 0xf5deb3,
@@ -87,6 +84,10 @@ function App() {
   const [sceneLoaded, setSceneLoaded] = useState(false);
   const [hoveredSection, setHoveredSection] = useState("");
   const [clickedSection, setClickedSection] = useState("");
+
+  const [hoveredArray, setHoveredArray] = useState([]);
+  const hoveredGroup = useRef(null);
+  const hoveredGroupAux = useRef(null);
 
   useEffect(() => {
     if (mainScene) {
@@ -105,6 +106,7 @@ function App() {
           setViewPosition(initPos2);
           setViewRotation(initRotation2);
           setSceneLoaded(true);
+          console.log("mainScene --> ", mainScene);
         }, 1000);
       });
     }
@@ -170,8 +172,14 @@ function App() {
       object.name.indexOf("Assembly") > -1 &&
       object.name.indexOf("Assembly-7") === -1
     ) {
-      document.body.style.cursor = "pointer";
       if (hoveredSection === "" && clickedSection === "") {
+        document.body.style.cursor = "pointer";
+        if (object.name === "Assembly-12") {
+          hoveredGroup.current =
+            object.children[0].children[0].children[0].children[0].children[0].children[1].children[0].children[0];
+        } else {
+          hoveredGroup.current = object.children[0].children[0].children[0];
+        }
         switch (object.name) {
           case "Assembly-8":
             setHoveredSection("contact");
@@ -193,6 +201,7 @@ function App() {
     } else {
       if (hoveredSection !== "") {
         setHoveredSection("");
+        hoveredGroup.current = hoveredGroupAux.current;
       }
       document.body.style.cursor = "inherit";
     }
@@ -241,11 +250,7 @@ function App() {
           newViewRotation={viewRotation}
           editMode={true}
           setCamera={camera => setMainCamera(camera)}
-          objects={
-            mainScene && mainScene.children[1]
-              ? mainScene.children[1].children
-              : null
-          }
+          objects={mainScene && mainScene.children ? mainScene.children : null}
           onObjectHover={objects => {
             if (objects) {
               [objects[0]].forEach(object => {
@@ -253,6 +258,8 @@ function App() {
               });
             } else {
               document.body.style.cursor = "inherit";
+              hoveredGroup.current = hoveredGroupAux.current;
+
               if (hoveredSection !== "") {
                 setHoveredSection("");
               }
@@ -264,6 +271,21 @@ function App() {
           intensity={1.2}
           position={[0.8, 1, 0]}
         />
+        <group ref={hoveredGroup}></group>
+        <group ref={hoveredGroupAux}></group>
+        <EffectComposer>
+          <Outline
+            selection={[hoveredGroup]} // selection of objects that wiill be outlined
+            selectionLayer={10} // selection layer
+            patternTexture={null} // a pattern texture
+            edgeStrength={2} // the edge strength
+            pulseSpeed={0.0} // a pulse speed. A value of zero disables the pulse effect
+            visibleEdgeColor={0xf5deb3} // the color of visible edges
+            hiddenEdgeColor={0x22090a} // the color of hidden edges
+            blur={true} // whether the outline should be blurred
+            xRay={true} // indicates whether X-Ray outlines are enabled
+          />
+        </EffectComposer>
       </Canvas>
       {sceneLoaded && (
         <Menu

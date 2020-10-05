@@ -24,7 +24,6 @@ const NavigationControls = props => {
 
   const {
     camera,
-    raycaster,
     gl: { domElement }
   } = useThree();
   const centerRaycaster = new THREE.Raycaster();
@@ -35,14 +34,10 @@ const NavigationControls = props => {
   let moveDown = false;
   let moveLeft = false;
   let moveRight = false;
-  let canJump = false;
 
   var prevTime = performance.now();
   const velocity = new THREE.Vector3();
   const direction = new THREE.Vector3();
-  const vertex = new THREE.Vector3();
-  const color = new THREE.Color();
-  const objects = [];
 
   var onKeyDown = function(event) {
     if (event.ctrlKey && event.key === "m") {
