@@ -4,7 +4,7 @@ import "./menu.css";
 const Menu = props => {
   const { hoveredSection, onClickSection, currentSection } = props;
   return (
-    <div className="menu-container">
+    <div className={`menu-container ${currentSection === "" ? "home" : ""}`}>
       <div
         className={`menu-section ${
           hoveredSection === "projects" ? "hovered" : ""

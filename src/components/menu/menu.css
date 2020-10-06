@@ -1,12 +1,18 @@
 .menu-container {
   z-index: 4;
   position: fixed;
-  right: 100px;
-  top: 88px;
+  right: 30px;
+  top: 30px;
   padding-right: 12px;
-  border-right: 6px solid #806a4d;
-  font-family: "Righteous", cursive;
-  letter-spacing: 2px;
+  border-right: 4px solid #806a4d;
+  font-family: "Poppins", sans-serif;
+  /* letter-spacing: 2px; */
+  transition: all 2s ease-in-out;
+}
+
+.home {
+  top: 100px;
+  right: 100px;
 }
 
 .menu-section {
@@ -18,6 +24,16 @@
   color: wheat;
   text-align: end;
   transition: all 0.3s ease-in-out;
+}
+
+.home .menu-section {
+  font-size: 72px;
+  line-height: 82px;
+}
+
+.home .menu-section:hover,
+.hovered {
+  font-size: 82px;
 }
 
 .menu-section:hover,
