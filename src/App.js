@@ -9,6 +9,7 @@ import Menu from "./components/menu/menu";
 import { EffectComposer, Outline } from "@react-three/postprocessing";
 import SectionContainer from "./components/section-container/section-container";
 import BackArrow from "./assets/images/back-arrow.svg";
+import Projects from "./containers/projects/projects";
 
 /**
  Assembly - sections:
@@ -299,7 +300,9 @@ function App() {
           onClickSection={handleClickSection}
         />
       )}
-      <SectionContainer show={showSection}></SectionContainer>
+      <SectionContainer show={showSection}>
+        {showSection && clickedSection === "projects" && <Projects />}
+      </SectionContainer>
     </div>
   );
 }
