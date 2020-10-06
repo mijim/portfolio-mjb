@@ -4,15 +4,21 @@
   right: 30px;
   top: 30px;
   padding-right: 12px;
-  border-right: 4px solid #806a4d;
+  border-right: 4px solid #db4d59;
   font-family: "Poppins", sans-serif;
   /* letter-spacing: 2px; */
   transition: all 2s ease-in-out;
 }
 
 .home {
-  top: 100px;
+  top: 150px;
   right: 100px;
+}
+
+.mjb-title {
+  color: #db4d59;
+  font-size: 18px;
+  text-align: right;
 }
 
 .menu-section {
