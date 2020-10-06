@@ -9,6 +9,18 @@
   pointer-events: none;
 }
 
+.back-arrow-container {
+  cursor: pointer;
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  z-index: 6;
+}
+
+.back-arrow-container img {
+  width: 46px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

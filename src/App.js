@@ -8,6 +8,7 @@ import Loader from "./components/loader/loader";
 import Menu from "./components/menu/menu";
 import { EffectComposer, Outline } from "@react-three/postprocessing";
 import SectionContainer from "./components/section-container/section-container";
+import BackArrow from "./assets/images/back-arrow.svg";
 
 /**
  Assembly - sections:
@@ -202,7 +203,9 @@ function App() {
     clearTimeout(transitionTimeout);
     setShowSection(false);
     setTimeout(() => {
-      setShowSection(true);
+      if (section !== "") {
+        setShowSection(true);
+      }
     }, 2000);
     setClickedSection(section);
     switch (section) {
@@ -279,6 +282,16 @@ function App() {
           />
         </EffectComposer>
       </Canvas>
+      {clickedSection !== "" && (
+        <div
+          className="back-arrow-container"
+          onClick={() => {
+            handleClickSection("");
+          }}
+        >
+          <img src={BackArrow} alt="Go back" />
+        </div>
+      )}
       {sceneLoaded && (
         <Menu
           currentSection={clickedSection}
