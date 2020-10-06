@@ -37,7 +37,7 @@
 }
 
 .projects-button {
-  color: #db7c4d;
+  color: #db4d59;
   cursor: pointer;
   text-transform: uppercase;
   border: 1px solid wheat;
@@ -53,6 +53,6 @@
 
 .projects-button:hover {
   color: wheat;
-  background: #db7c4d;
-  border: 1px solid #db7c4d;
+  background: #db4d59;
+  border: 1px solid #db4d59;
 }
