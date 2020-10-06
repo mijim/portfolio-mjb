@@ -64,13 +64,9 @@ const contactRot = [
   1.990423180100031
 ];
 
-const aboutPos = [-0.25559730511247675, 1.7824296355719624, 0.3143418313611403];
+const aboutPos = [-0.3490276898342644, 1.101469635568129, -1.392597431873884];
 
-const aboutRot = [-0.2695999166321467, 0.7678853941471353, 0.1896349937533332];
-
-const linksPos = [-0.3490276898342644, 1.101469635568129, -1.392597431873884];
-
-const linksRot = [-3.1282361997594617, 1.3512963700412088, 3.128556631729886];
+const aboutRot = [-3.1282361997594617, 1.3512963700412088, 3.128556631729886];
 
 const edgesMaterial = new THREE.LineBasicMaterial({
   color: 0xf5deb3,
@@ -164,22 +160,19 @@ function App() {
       object &&
       object.name.indexOf("Assembly") === -1 &&
       object.parent &&
-      object.name.indexOf("Assembly-7") === -1
+      object.name.indexOf("Assembly-7") === -1 &&
+      object.name.indexOf("Assembly-12") === -1
     ) {
       handleHover(object.parent);
     } else if (
       object &&
       object.name.indexOf("Assembly") > -1 &&
-      object.name.indexOf("Assembly-7") === -1
+      object.name.indexOf("Assembly-7") === -1 &&
+      object.name.indexOf("Assembly-12") === -1
     ) {
       if (hoveredSection === "" && clickedSection === "") {
         document.body.style.cursor = "pointer";
-        if (object.name === "Assembly-12") {
-          hoveredGroup.current =
-            object.children[0].children[0].children[0].children[0].children[0].children[1].children[0].children[0];
-        } else {
-          hoveredGroup.current = object.children[0].children[0].children[0];
-        }
+        hoveredGroup.current = object.children[0].children[0].children[0];
         switch (object.name) {
           case "Assembly-8":
             setHoveredSection("contact");
@@ -190,9 +183,6 @@ function App() {
             setHoveredSection("projects");
             break;
           case "Assembly-8_1":
-            setHoveredSection("links");
-            break;
-          case "Assembly-12":
             setHoveredSection("about");
             break;
           default:
@@ -219,10 +209,6 @@ function App() {
       case "projects":
         setViewPosition(projectsPos);
         setViewRotation(projectsRot);
-        break;
-      case "links":
-        setViewPosition(linksPos);
-        setViewRotation(linksRot);
         break;
       case "about":
         setViewPosition(aboutPos);

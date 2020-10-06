@@ -16,13 +16,6 @@ const Menu = props => {
         Proyectos
       </div>
       <div
-        className={`menu-section ${hoveredSection === "about" ? "hovered" : ""}
-        ${currentSection === "about" ? "clicked" : ""}`}
-        onClick={() => onClickSection("about")}
-      >
-        Sobre mí
-      </div>
-      <div
         className={`menu-section ${
           hoveredSection === "contact" ? "hovered" : ""
         }
@@ -32,11 +25,11 @@ const Menu = props => {
         Contacto
       </div>
       <div
-        className={`menu-section ${hoveredSection === "links" ? "hovered" : ""}
-        ${currentSection === "links" ? "clicked" : ""}`}
-        onClick={() => onClickSection("links")}
+        className={`menu-section ${hoveredSection === "about" ? "hovered" : ""}
+        ${currentSection === "about" ? "clicked" : ""}`}
+        onClick={() => onClickSection("about")}
       >
-        Enlaces
+        Sobre mí
       </div>
     </div>
   );
