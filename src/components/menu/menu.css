@@ -11,8 +11,8 @@
 }
 
 .home {
-  top: 150px;
-  right: 100px;
+  top: 80px;
+  right: 80px;
 }
 
 .mjb-title {
@@ -23,8 +23,8 @@
 
 .menu-section {
   cursor: pointer;
-  line-height: 62px;
-  font-size: 48px;
+  line-height: 42px;
+  font-size: 32px;
   font-weight: bold;
   text-transform: uppercase;
   color: wheat;
@@ -44,9 +44,9 @@
 
 .menu-section:hover,
 .hovered {
-  font-size: 62px;
+  font-size: 42px;
 }
 .clicked {
-  font-size: 62px;
+  font-size: 42px;
   color: #db4d59;
 }

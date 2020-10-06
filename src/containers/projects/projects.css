@@ -1,7 +1,7 @@
 .projects-container {
   color: white;
   margin-top: 100px;
-  margin-left: 140px;
+  margin-left: 100px;
   text-align: left;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .projects-title {
-  color: #f7cc5e;
+  color: wheat;
   font-size: 112px;
   letter-spacing: 6px;
   margin-bottom: 42px;
