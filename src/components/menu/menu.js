@@ -3,6 +3,7 @@ import "./menu.css";
 
 const Menu = props => {
   const { hoveredSection, onClickSection, currentSection } = props;
+  console.log("hoveredSection --> ", hoveredSection);
   return (
     <>
       <div className={`menu-container ${currentSection === "" ? "home" : ""}`}>

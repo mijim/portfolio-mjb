@@ -49,7 +49,6 @@ const Loader = props => {
           stroke-linejoin="round"
         ></path>
       </svg>
-      {"Loading"}
     </div>
   );
 };

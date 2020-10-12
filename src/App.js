@@ -264,8 +264,15 @@ function App() {
         />
         <directionalLight
           color={"#ffffff"}
-          intensity={1.2}
+          intensity={0.8}
           position={[0.8, 1, 0]}
+        />
+        <hemisphereLight
+          castShadow={true}
+          color={"#bee8f7"}
+          groundColor={"#f5deb3"}
+          intensity={0.3}
+          position={[0, 2, 0]}
         />
         <group ref={hoveredGroup}></group>
         <group ref={hoveredGroupAux}></group>
