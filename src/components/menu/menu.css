@@ -54,3 +54,25 @@
   font-size: 42px;
   color: #db4d59;
 }
+
+@media (max-width: 1000px) {
+  .menu-section {
+    opacity: 0;
+  }
+  .home .menu-section {
+    opacity: 1;
+    font-size: 46px;
+    line-height: 56px;
+  }
+  .menu-container {
+    top: 0;
+    right: 0;
+    transition: all 0.2s ease-in-out;
+    border-top: 4px solid #db4d59;
+  }
+  .home {
+    border-top: 0;
+    top: 80px;
+    right: 20px;
+  }
+}
