@@ -33,22 +33,26 @@ const Projects = () => {
         </div>
         <div className="projects-img">
           <img src={rulerulerImg} alt="ruleruler-img" />
-          <a
-            className="projects-button"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://ruleruler.design/"
-          >
-            Ver
-          </a>
-          <a
-            className="projects-button"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://chrome.google.com/webstore/detail/ruleruler/ghcmdbcpgmkalnkmnnjiehggdgimlmhi"
-          >
-            Instalar
-          </a>
+          <div className="projects-img__buttons">
+            <div className="projects-button">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://ruleruler.design/"
+              >
+                Ver
+              </a>
+            </div>
+            <div className="projects-button">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://chrome.google.com/webstore/detail/ruleruler/ghcmdbcpgmkalnkmnnjiehggdgimlmhi"
+              >
+                Instalar
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <div className="projects-section">

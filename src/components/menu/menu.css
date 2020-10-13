@@ -10,6 +10,10 @@
   transition: all 2s ease-in-out;
 }
 
+.collapse .menu-section {
+  opacity: 0;
+}
+
 .home {
   top: 80px;
   right: 80px;

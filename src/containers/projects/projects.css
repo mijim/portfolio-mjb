@@ -1,7 +1,7 @@
 .projects-container {
   color: white;
   margin-top: 100px;
-  margin-left: 100px;
+  margin-left: 200px;
   text-align: left;
 }
 
@@ -36,23 +36,49 @@
   margin-right: 32px;
 }
 
+.projects-img__buttons {
+  display: flex;
+}
+
 .projects-button {
-  color: wheat;
   cursor: pointer;
   text-transform: uppercase;
   border: 1px solid wheat;
   border-radius: 8px;
   padding: 15px;
   margin-right: 32px;
-  width: 200px;
+  width: 100px;
   text-align: center;
   font-size: 20px;
   transition: all 0.2s ease-in-out;
+}
+
+.projects-button a {
   text-decoration: none;
+  color: wheat;
 }
 
 .projects-button:hover {
   color: wheat;
   background: #db4d59;
   border: 1px solid #db4d59;
+}
+
+@media (max-width: 1674px) {
+  .projects-container {
+    margin-left: 100px;
+  }
+}
+
+@media (max-width: 1390px) {
+  .projects-text {
+    max-width: 800px;
+  }
+  .projects-img__buttons {
+    flex-direction: column;
+  }
+  .projects-button {
+    margin-bottom: 6px;
+    margin-top: 6px;
+  }
 }

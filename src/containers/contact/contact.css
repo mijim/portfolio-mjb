@@ -19,20 +19,20 @@
 }
 
 .contact-input input {
-  font-size: 26px;
+  font-size: 18px;
   background: rgba(0, 0, 0, 0.8);
   color: white;
-  border: 2px solid wheat;
+  border: 2px solid rgba(245, 222, 179, 0.4);
   border-radius: 8px;
   padding: 10px;
   width: 600px;
 }
 
 .contact-input textarea {
-  font-size: 20px;
+  font-size: 16px;
   background: rgba(0, 0, 0, 0.8);
   color: white;
-  border: 2px solid wheat;
+  border: 2px solid rgba(245, 222, 179, 0.4);
   border-radius: 8px;
   padding: 10px;
   width: 600px;

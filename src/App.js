@@ -85,6 +85,7 @@ function App() {
   const [hoveredSection, setHoveredSection] = useState("");
   const [clickedSection, setClickedSection] = useState("");
   const [showSection, setShowSection] = useState(false);
+  const [sectionScrollY, setSectionScrollY] = useState(0);
 
   const hoveredGroup = useRef(null);
   const hoveredGroupAux = useRef(null);
@@ -306,9 +307,13 @@ function App() {
           currentSection={clickedSection}
           hoveredSection={hoveredSection}
           onClickSection={handleClickSection}
+          sectionScrollY={sectionScrollY}
         />
       )}
-      <SectionContainer show={showSection}>
+      <SectionContainer
+        show={showSection}
+        setScrollY={scrollY => setSectionScrollY(scrollY)}
+      >
         {showSection && clickedSection === "projects" && <Projects />}
         {showSection && clickedSection === "contact" && <Contact />}
       </SectionContainer>

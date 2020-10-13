@@ -3,10 +3,16 @@ import "./menu.css";
 
 const Menu = props => {
   const { hoveredSection, onClickSection, currentSection } = props;
-  console.log("hoveredSection --> ", hoveredSection);
+
   return (
     <>
-      <div className={`menu-container ${currentSection === "" ? "home" : ""}`}>
+      <div
+        className={`menu-container ${currentSection === "" ? "home" : ""} ${
+          window.innerWidth < 1260 && props.sectionScrollY > 100
+            ? "collapse"
+            : ""
+        }`}
+      >
         {currentSection === "" && (
           <div className="mjb-title">Miguel Jiménez Benajes</div>
         )}
