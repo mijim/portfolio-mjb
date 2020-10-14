@@ -72,7 +72,7 @@ const MobileEffect = props => {
     if (moveFast) {
       totalTime = 20;
       timeout = setTimeout(() => {
-        increaseTime = 0.0002;
+        increaseTime = 0.0001;
       }, 500);
       uniforms.u_mouse.value
         .set(
@@ -104,7 +104,7 @@ const MobileEffect = props => {
         shadowMap
       >
         <Sphere
-          position={[0, -1.4, 0]}
+          position={[-0.2, -1.4, 0]}
           material={material}
           scale={[0.7, 0.7, 0.7]}
         />

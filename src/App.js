@@ -208,11 +208,14 @@ function App() {
   const handleClickSection = section => {
     clearTimeout(transitionTimeout);
     setShowSection(false);
-    setTimeout(() => {
-      if (section !== "") {
-        setShowSection(true);
-      }
-    }, 2000);
+    setTimeout(
+      () => {
+        if (section !== "") {
+          setShowSection(true);
+        }
+      },
+      window.innerWidth > 1000 ? 2000 : 200
+    );
     setClickedSection(section);
     switch (section) {
       case "projects":
@@ -321,7 +324,7 @@ function App() {
         />
       )}
       <SectionContainer
-        show={window.innerWidth > 1000 && showSection}
+        show={showSection}
         setScrollY={scrollY => setSectionScrollY(scrollY)}
       >
         {showSection && clickedSection === "projects" && <Projects />}

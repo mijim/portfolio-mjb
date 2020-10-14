@@ -3,7 +3,7 @@ import "./contact.css";
 
 const Contact = () => {
   return (
-    <div className="contact-container">
+    <div className={`contact-container`}>
       <div className="contact-title">{"Escríbeme y hablamos"}</div>
       <div className="contact-input">
         <input placeholder="Nombre..." />
