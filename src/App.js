@@ -11,6 +11,7 @@ import SectionContainer from "./components/section-container/section-container";
 import BackArrow from "./assets/images/back-arrow.svg";
 import Projects from "./containers/projects/projects";
 import Contact from "./containers/contact/contact";
+import MobileEffect from "./components/mobile-effect/mobile-effect";
 
 /**
  Assembly - sections:
@@ -235,65 +236,72 @@ function App() {
   return (
     <div className="App">
       <Loader loaded={sceneLoaded} />
-      <Canvas
-        id="main-canvas"
-        camera={{
-          position: [3.2158506873285586, 3.644959635571787, -1],
-          fov: 50,
-          near: 0.001
-        }}
-        onCreated={context => setMainScene(context.scene)}
-        shadowMap
-      >
-        <NavigationControls
-          newViewPostion={viewPosition}
-          newViewRotation={viewRotation}
-          editMode={true}
-          setCamera={camera => setMainCamera(camera)}
-          objects={mainScene && mainScene.children ? mainScene.children : null}
-          onObjectHover={objects => {
-            if (objects) {
-              [objects[0]].forEach(object => {
-                handleHover(object.object);
-              });
-            } else {
-              document.body.style.cursor = "inherit";
-              hoveredGroup.current = hoveredGroupAux.current;
-
-              if (hoveredSection !== "") {
-                setHoveredSection("");
-              }
-            }
+      {window.innerWidth <= 1000 ? (
+        <MobileEffect moveFast={clickedSection !== ""} stopAnimation={false} />
+      ) : (
+        <Canvas
+          id="main-canvas"
+          camera={{
+            position: [3.2158506873285586, 3.644959635571787, -1],
+            fov: 50,
+            near: 0.001
           }}
-        />
-        <directionalLight
-          color={"#ffffff"}
-          intensity={0.8}
-          position={[0.8, 1, 0]}
-        />
-        <hemisphereLight
-          castShadow={true}
-          color={"#bee8f7"}
-          groundColor={"#f5deb3"}
-          intensity={0.3}
-          position={[0, 2, 0]}
-        />
-        <group ref={hoveredGroup}></group>
-        <group ref={hoveredGroupAux}></group>
-        <EffectComposer>
-          <Outline
-            selection={[hoveredGroup]} // selection of objects that wiill be outlined
-            selectionLayer={10} // selection layer
-            patternTexture={null} // a pattern texture
-            edgeStrength={2} // the edge strength
-            pulseSpeed={0.0} // a pulse speed. A value of zero disables the pulse effect
-            visibleEdgeColor={0xf5deb3} // the color of visible edges
-            hiddenEdgeColor={0x22090a} // the color of hidden edges
-            blur={true} // whether the outline should be blurred
-            xRay={true} // indicates whether X-Ray outlines are enabled
+          onCreated={context => setMainScene(context.scene)}
+          shadowMap
+        >
+          <NavigationControls
+            newViewPostion={viewPosition}
+            newViewRotation={viewRotation}
+            editMode={true}
+            setCamera={camera => setMainCamera(camera)}
+            objects={
+              mainScene && mainScene.children ? mainScene.children : null
+            }
+            onObjectHover={objects => {
+              if (objects) {
+                [objects[0]].forEach(object => {
+                  handleHover(object.object);
+                });
+              } else {
+                document.body.style.cursor = "inherit";
+                hoveredGroup.current = hoveredGroupAux.current;
+
+                if (hoveredSection !== "") {
+                  setHoveredSection("");
+                }
+              }
+            }}
           />
-        </EffectComposer>
-      </Canvas>
+          <directionalLight
+            color={"#fffff"}
+            intensity={0.8}
+            position={[0.8, 1, 0]}
+          />
+          <hemisphereLight
+            castShadow={true}
+            color={"#bee8f7"}
+            groundColor={"#f5deb3"}
+            intensity={0.3}
+            position={[0, 2, 0]}
+          />
+          <group ref={hoveredGroup}></group>
+          <group ref={hoveredGroupAux}></group>
+          <EffectComposer>
+            <Outline
+              selection={[hoveredGroup]} // selection of objects that wiill be outlined
+              selectionLayer={10} // selection layer
+              patternTexture={null} // a pattern texture
+              edgeStrength={2} // the edge strength
+              pulseSpeed={0.0} // a pulse speed. A value of zero disables the pulse effect
+              visibleEdgeColor={0xf5deb3} // the color of visible edges
+              hiddenEdgeColor={0x22090a} // the color of hidden edges
+              blur={true} // whether the outline should be blurred
+              xRay={true} // indicates whether X-Ray outlines are enabled
+            />
+          </EffectComposer>
+        </Canvas>
+      )}
+
       {clickedSection !== "" && (
         <div
           className="back-arrow-container"
@@ -313,7 +321,7 @@ function App() {
         />
       )}
       <SectionContainer
-        show={showSection}
+        show={window.innerWidth > 1000 && showSection}
         setScrollY={scrollY => setSectionScrollY(scrollY)}
       >
         {showSection && clickedSection === "projects" && <Projects />}
