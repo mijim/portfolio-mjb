@@ -206,33 +206,35 @@ function App() {
 
   let transitionTimeout = null;
   const handleClickSection = section => {
-    clearTimeout(transitionTimeout);
-    setShowSection(false);
-    setTimeout(
-      () => {
-        if (section !== "") {
-          setShowSection(true);
-        }
-      },
-      window.innerWidth > 1000 ? 2000 : 200
-    );
-    setClickedSection(section);
-    switch (section) {
-      case "projects":
-        setViewPosition(projectsPos);
-        setViewRotation(projectsRot);
-        break;
-      case "about":
-        setViewPosition(aboutPos);
-        setViewRotation(aboutRot);
-        break;
-      case "contact":
-        setViewPosition(contactPos);
-        setViewRotation(contactRot);
-        break;
-      default:
-        setViewPosition(initPos2);
-        setViewRotation(initRotation2);
+    if (window.innerWidth > 1000 || clickedSection === "" || section === "") {
+      clearTimeout(transitionTimeout);
+      setShowSection(false);
+      setTimeout(
+        () => {
+          if (section !== "") {
+            setShowSection(true);
+          }
+        },
+        window.innerWidth > 1000 ? 2000 : 200
+      );
+      setClickedSection(section);
+      switch (section) {
+        case "projects":
+          setViewPosition(projectsPos);
+          setViewRotation(projectsRot);
+          break;
+        case "about":
+          setViewPosition(aboutPos);
+          setViewRotation(aboutRot);
+          break;
+        case "contact":
+          setViewPosition(contactPos);
+          setViewRotation(contactRot);
+          break;
+        default:
+          setViewPosition(initPos2);
+          setViewRotation(initRotation2);
+      }
     }
   };
 

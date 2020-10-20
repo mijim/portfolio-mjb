@@ -15,3 +15,10 @@
 .show {
   opacity: 1;
 }
+
+@media (max-width: 1000px) {
+  .section-container {
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.7);
+  }
+}

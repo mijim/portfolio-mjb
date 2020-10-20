@@ -57,22 +57,26 @@
 
 @media (max-width: 1000px) {
   .menu-section {
-    opacity: 0;
+    display: none;
   }
   .home .menu-section {
-    opacity: 1;
+    display: block;
     font-size: 46px;
     line-height: 56px;
   }
   .menu-container {
     top: 0;
     right: 0;
-    transition: all 0.2s ease-in-out;
-    border-top: 4px solid #db4d59;
+    transition: height 0s, right 0.2s, top 0.6s ease-in-out;
+    border-right: 4px solid #db4d59;
+    height: 64px;
+    z-index: 1;
   }
   .home {
     border-top: 0;
     top: 60px;
     right: 20px;
+    height: 200px;
+    background: transparent;
   }
 }

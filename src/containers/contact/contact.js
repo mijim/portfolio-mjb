@@ -1,10 +1,11 @@
 import React from "react";
 import "./contact.css";
+import BackArrow from "../../assets/images/back-arrow.svg";
 
 const Contact = () => {
   return (
     <div className={`contact-container`}>
-      <div className="contact-title">{"Escríbeme y hablamos"}</div>
+      <div className="contact-title">{"¿Hablamos?"}</div>
       <div className="contact-input">
         <input placeholder="Nombre..." />
       </div>

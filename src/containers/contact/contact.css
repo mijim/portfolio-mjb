@@ -60,19 +60,23 @@
   border: 1px solid #db4d59;
 }
 
+.back-container {
+  display: none;
+}
+
 @media (max-width: 1000px) {
   .contact-container {
-    position: fixed;
-    bottom: 0;
-    width: calc(100% - 60px);
+    width: 100%;
+    margin-top: 0;
   }
   .contact-title {
-    position: fixed;
-    top: 15px;
+    top: 10px;
     right: 25px;
     font-size: 36px;
-    text-align: right;
-    width: 200px;
+    text-align: center;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 20px;
   }
   .contact-input {
     width: 100%;
@@ -88,6 +92,18 @@
   }
   .contact-button {
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
+  }
+  .back-container {
+    display: block;
+    top: 0;
+    left: 0;
+    background: black;
+    padding: 14px;
+    position: absolute;
+    border-bottom-right-radius: 20px;
+  }
+  .back-container img {
+    width: 32px;
   }
 }
