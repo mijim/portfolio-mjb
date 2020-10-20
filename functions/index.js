@@ -1,35 +1,37 @@
-import credentials from "./credentials";
-
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-const nodemailer = require("nodemailer");
-const cors = require("cors")({ origin: true });
+const sgMail = require("@sendgrid/mail");
+
+const SENDGRID_API_KEY =
+  "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";
+sgMail.setApiKey(SENDGRID_API_KEY);
 
 admin.initializeApp();
-let transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: credentials
-});
 
-exports.sendMail = functions.https.onRequest((request, responde) => {
-  cors(req, res, () => {
-    const email = req.query.email;
-    const name = req.query.name;
-    const subject = req.query.subject;
-    const body = req.query.body;
+exports.sendMail = functions.https.onRequest((req, res) => {
+  const email = req.query.email;
+  const name = req.query.name;
+  const subject = req.query.subject;
+  const body = req.query.body;
+  const mailOptions = {
+    from: "migueljimenezbenajes@gmail.com",
+    to: "migueljimenezbenajes@gmail.com",
+    subject: `Contact Portfolio - ${subject}`,
+    text: `${email} - ${name}:\n\n ${body}`
+  };
 
-    const mailOptions = {
-      from: `${name} <${email}>`,
-      to: "migueljimenezbenajes@gmail.com",
-      subject: `Contact Portfolio - ${subject}`,
-      html: body
-    };
+  console.log("mailOptions --> ", mailOptions);
 
-    return transporter.sendMail(mailOptions, (erro, info) => {
-      if (erro) {
-        return res.send(erro.toString());
-      }
-      return res.send("Sended!");
+  sgMail
+    .send(mailOptions)
+    .then(() => {
+      console.log("Success ");
+      return res.json({
+        resp: "Email Sent"
+      });
+    })
+    .catch(error => {
+      console.log("error --> ", error);
+      return res.json({ resp: `Error: ${error}` });
     });
-  });
 });
