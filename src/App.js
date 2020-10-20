@@ -215,7 +215,7 @@ function App() {
             setShowSection(true);
           }
         },
-        window.innerWidth > 1000 ? 2000 : 200
+        window.innerWidth > 1000 ? 2000 : 800
       );
       setClickedSection(section);
       switch (section) {
