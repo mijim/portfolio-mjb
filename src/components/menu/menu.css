@@ -67,7 +67,7 @@
   .menu-container {
     top: 0;
     right: 0;
-    transition: height 0s, right 0.2s, top 0.6s ease-in-out;
+    transition: height 0.8s, right 0.2s, top 0.6s ease-in-out;
     border-right: 4px solid #db4d59;
     height: 64px;
     z-index: 1;
