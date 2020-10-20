@@ -9,13 +9,14 @@ export const vertexShader = `
     // Common varyings
     varying vec3 v_position;
     varying vec3 v_normal;
+    varying vec2 vUv;
 
     /*
     * The main program
     */
     void main() {
         // Calculate the new vertex position to simulate a wave effect
-        float effect_intensity = 2.0 * u_mouse.x / u_resolution.x;
+        float effect_intensity = 1.0 * u_mouse.x / u_resolution.x;
         vec3 new_position = position + effect_intensity * (0.5 + 0.5 * cos(position.x + 4.0 * u_time)) * normal;
 
         // Calculate the modelview position
@@ -27,6 +28,8 @@ export const vertexShader = `
 
         // Vertex shader output
         gl_Position = projectionMatrix * mv_position;
+
+        vUv = uv;
     }
 `;
 
@@ -37,10 +40,14 @@ export const fragmentShader = `
     uniform vec2 u_mouse;
     uniform float u_time;
     uniform float u_frame;
+    uniform vec3 color1;
+    uniform vec3 color2;
 
     // Common varyings
     varying vec3 v_position;
     varying vec3 v_normal;
+    varying vec2 vUv;
+
 
     /*
     *  Calculates the normal vector at the given position
@@ -91,7 +98,7 @@ export const fragmentShader = `
         // surface_color *= diffuseFactor(new_normal, light_direction);
 
         // Fragment shader output
-        gl_FragColor = vec4(surface_color, 1.0);
+        gl_FragColor = vec4(mix(color1, color2, vUv.y), 1.0);
 
     }
 `;

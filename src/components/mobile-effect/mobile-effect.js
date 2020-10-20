@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "./mobile-effect.css";
 import { Canvas, useFrame, render } from "react-three-fiber";
 import { vertexShader, fragmentShader } from "./shaders";
 import * as THREE from "three";
 import { Sphere, OrbitControls } from "drei";
+import gsap from "gsap";
 
 let movePower = 0.1;
 
@@ -16,6 +17,12 @@ const uniforms = {
   u_frame: {
     type: "f",
     value: 0.0
+  },
+  color1: {
+    value: new THREE.Color("#db4d59")
+  },
+  color2: {
+    value: new THREE.Color("wheat")
   },
   u_resolution: {
     type: "v2",
@@ -56,7 +63,7 @@ let totalTime = 0;
 
 const MobileEffect = props => {
   const { stopAnimation, moveFast } = props;
-
+  const sphereRef = useRef();
   useEffect(() => {
     setInterval(() => {
       totalTime += increaseTime;
@@ -70,24 +77,41 @@ const MobileEffect = props => {
   useEffect(() => {
     clearTimeout(timeout);
     if (moveFast) {
-      totalTime = 20;
-      timeout = setTimeout(() => {
-        increaseTime = 0.0001;
-      }, 500);
-      uniforms.u_mouse.value
-        .set(
-          window.innerWidth * 3,
-          window.innerHeight - (window.innerHeight * 3 - 100)
-        )
-        .multiplyScalar(window.devicePixelRatio);
+      increaseTime = 0.005;
+      if (sphereRef.current) {
+        gsap.to(sphereRef.current.scale, {
+          duration: 0.7,
+          x: 4,
+          y: 4,
+          z: 4,
+          ease: "power2.in"
+        });
+        gsap.to(sphereRef.current.rotation, {
+          duration: 0.7,
+          x: 0.4,
+          y: 0.4,
+          z: 0.4,
+          ease: "power2.in"
+        });
+      }
     } else {
-      totalTime = 80;
       increaseTime = 0.01;
-      setTimeout(() => {
-        uniforms.u_mouse.value
-          .set(100, window.innerHeight - 100)
-          .multiplyScalar(window.devicePixelRatio);
-      }, 900);
+      if (sphereRef.current) {
+        gsap.to(sphereRef.current.scale, {
+          duration: 0.7,
+          x: 0.7,
+          y: 0.7,
+          z: 0.7,
+          ease: "power2.out"
+        });
+        gsap.to(sphereRef.current.rotation, {
+          duration: 0.7,
+          x: 0,
+          y: 0,
+          z: 0,
+          ease: "power2.out"
+        });
+      }
     }
   }, [stopAnimation, moveFast]);
 
@@ -104,6 +128,7 @@ const MobileEffect = props => {
         shadowMap
       >
         <Sphere
+          ref={sphereRef}
           position={[-0.2, -1.4, 0]}
           material={material}
           scale={[0.7, 0.7, 0.7]}
