@@ -1,5 +1,5 @@
 .projects-container {
-  color: white;
+  color: wheat;
   margin-top: 100px;
   margin-left: 200px;
   text-align: left;
@@ -10,7 +10,7 @@
 }
 
 .projects-title {
-  color: wheat;
+  color: #db4d59;
   font-size: 112px;
   letter-spacing: 6px;
   margin-bottom: 42px;
@@ -80,5 +80,41 @@
   .projects-button {
     margin-bottom: 6px;
     margin-top: 6px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .projects-container {
+    margin-left: 0;
+    margin-top: 50px;
+  }
+  .projects-title {
+    font-size: 32px;
+    letter-spacing: 2px;
+    margin-bottom: 20;
+    font-weight: bold;
+  }
+  .projects-img {
+    display: block;
+  }
+  .projects-img img {
+    width: calc(100vw - 60px);
+    margin-bottom: 24px;
+  }
+  .projects-text {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+  .projects-img__buttons {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .projects-button {
+    margin: 0;
+    font-size: 18px;
+    padding: 10px;
+  }
+  .projects-section {
+    margin-bottom: 90px;
   }
 }
