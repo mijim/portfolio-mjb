@@ -12,6 +12,7 @@ import BackArrow from "./assets/images/back-arrow.svg";
 import Projects from "./containers/projects/projects";
 import Contact from "./containers/contact/contact";
 import MobileEffect from "./components/mobile-effect/mobile-effect";
+import About from "./containers/about/about";
 
 /**
  Assembly - sections:
@@ -305,6 +306,7 @@ function App() {
       >
         {showSection && clickedSection === "projects" && <Projects />}
         {showSection && clickedSection === "contact" && <Contact />}
+        {showSection && clickedSection === "about" && <About />}
       </SectionContainer>
     </div>
   );
