@@ -3,10 +3,13 @@ import "./loader.css";
 import loaderImg from "../../assets/images/loader.svg";
 
 const Loader = props => {
-  const { loaded } = props;
-  console.log("loaded --> ", loaded);
+  const { loaded, fastTransition } = props;
   return (
-    <div className={`loader-container ${loaded ? "loaded" : ""}`}>
+    <div
+      className={`loader-container ${loaded ? "loaded" : ""} ${
+        fastTransition ? "fast-transition" : ""
+      }`}
+    >
       <svg
         class="tea"
         width="37"

@@ -8,6 +8,8 @@
 }
 
 .contact-title {
+  font-family: "Poppins", sans-serif;
+
   font-size: 52px;
   font-weight: 500;
   color: wheat;
@@ -15,10 +17,12 @@
 }
 
 .contact-input {
-  margin-bottom: 40px;
+  margin-bottom: 28px;
 }
 
 .contact-input input {
+  font-family: "Poppins", sans-serif;
+
   font-size: 18px;
   background: rgba(0, 0, 0, 0.8);
   color: white;
@@ -29,6 +33,7 @@
 }
 
 .contact-input textarea {
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   background: rgba(0, 0, 0, 0.8);
   color: white;
@@ -39,7 +44,15 @@
   height: 200px;
   resize: none;
 }
+
+.filled input,
+.filled textarea {
+  border: 2px solid rgba(245, 222, 179, 1);
+}
+
 .contact-button {
+  font-family: "Poppins", sans-serif;
+
   color: wheat;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.8);
@@ -54,14 +67,34 @@
   text-decoration: none;
 }
 
-.contact-button:hover {
+:not(.disabled).contact-button:hover {
   color: wheat;
   background: #db4d59;
   border: 1px solid #db4d59;
 }
 
+.disabled {
+  cursor: initial;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(245, 222, 179, 0.4);
+}
+
 .back-container {
   display: none;
+}
+
+.contact-success {
+  color: wheat;
+  text-align: center;
+  font-size: 64px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.contact-success-sub {
+  color: rgba(245, 222, 179, 0.7);
+  text-align: center;
+  font-size: 28px;
 }
 
 @media (max-width: 1000px) {
@@ -105,5 +138,12 @@
   }
   .back-container img {
     width: 32px;
+  }
+  .contact-success {
+    font-size: 32px;
+  }
+
+  .contact-success-sub {
+    font-size: 16px;
   }
 }

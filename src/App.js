@@ -96,14 +96,6 @@ function App() {
       const loader = new GLTFLoader();
       loader.load("/models/portfolio_scene.gltf", object => {
         mainScene.children.push(object.scene);
-        // object.scene.children[0].children.forEach(child => {
-        //   if (
-        //     child.name.indexOf("Assembly") > -1 &&
-        //     child.name.indexOf("Assembly-7") === -1
-        //   ) {
-        //     addEdges(mainScene, child, `${child.name}-edges`);
-        //   }
-        // });
         setTimeout(() => {
           setViewPosition(initPos2);
           setViewRotation(initRotation2);
@@ -124,24 +116,6 @@ function App() {
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
   }, [hoveredSection]);
-
-  // useEffect(() => {
-  //   if (mainCamera) {
-  //     const handleMove = ev => {
-  //       const xValue = ev.clientX / 50000;
-  //       const yValue = ev.clientY / 50000;
-  //       if (initPos[0] !== viewRotation[0]) {
-  //         mainCamera.rotation.set(
-  //           viewRotation[0] - xValue,
-  //           viewRotation[1] - yValue,
-  //           viewRotation[2]
-  //         );
-  //       }
-  //     };
-  //     document.addEventListener("mousemove", handleMove);
-  //     return () => document.removeEventListener("mousemove", handleMove);
-  //   }
-  // }, [mainCamera, viewRotation]);
 
   const addEdges = (scene, object, name) => {
     if (object.geometry) {
@@ -293,15 +267,15 @@ function App() {
           <group ref={hoveredGroupAux}></group>
           <EffectComposer>
             <Outline
-              selection={[hoveredGroup]} // selection of objects that wiill be outlined
-              selectionLayer={10} // selection layer
-              patternTexture={null} // a pattern texture
-              edgeStrength={2} // the edge strength
-              pulseSpeed={0.0} // a pulse speed. A value of zero disables the pulse effect
-              visibleEdgeColor={0xf5deb3} // the color of visible edges
-              hiddenEdgeColor={0x22090a} // the color of hidden edges
-              blur={true} // whether the outline should be blurred
-              xRay={true} // indicates whether X-Ray outlines are enabled
+              selection={[hoveredGroup]}
+              selectionLayer={10}
+              patternTexture={null}
+              edgeStrength={2}
+              pulseSpeed={0.0}
+              visibleEdgeColor={0xf5deb3}
+              hiddenEdgeColor={0x22090a}
+              blur={true}
+              xRay={true}
             />
           </EffectComposer>
         </Canvas>

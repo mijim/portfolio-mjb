@@ -10,9 +10,13 @@
   justify-content: center;
   transition: all 1s ease-in-out;
   background: wheat;
-  z-index: 5;
+  z-index: 999999;
   color: #db4d59;
   font-weight: bold;
+}
+
+.fast-transition {
+  transition: all 0.2s ease-in-out;
 }
 
 .loaded {
