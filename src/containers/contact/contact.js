@@ -91,7 +91,7 @@ const Contact = () => {
               className={`contact-input ${fields.body === "" ? "" : "filled"}`}
             >
               <textarea
-                placeholder="Cuentame tu idea..."
+                placeholder="Cuéntame tu idea..."
                 onChange={ev => {
                   handleChange("body", ev.target.value);
                 }}
