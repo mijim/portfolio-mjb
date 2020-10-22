@@ -8,7 +8,10 @@ const Menu = props => {
     <>
       <div
         className={`menu-container ${currentSection === "" ? "home" : ""} ${
-          window.innerWidth < 1260 && props.sectionScrollY > 100
+          currentSection !== "" &&
+          window.innerWidth > 1000 &&
+          window.innerWidth < 1260 &&
+          props.sectionScrollY > 200
             ? "collapse"
             : ""
         }`}

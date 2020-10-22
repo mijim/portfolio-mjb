@@ -5,6 +5,7 @@
   justify-content: center;
   height: calc(100% - 134px);
   margin-top: 40px;
+  font-family: "Poppins", sans-serif;
 }
 
 .contact-title {
