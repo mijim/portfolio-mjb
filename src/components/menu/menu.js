@@ -1,5 +1,6 @@
 import React from "react";
 import "./menu.css";
+import { getCopy } from "../../languages/languages";
 
 const Menu = props => {
   const { hoveredSection, onClickSection, currentSection } = props;
@@ -28,7 +29,7 @@ const Menu = props => {
         `}
           onClick={() => onClickSection("projects")}
         >
-          Proyectos
+          {getCopy("menu0")}
         </div>
         <div
           className={`menu-section ${
@@ -37,7 +38,7 @@ const Menu = props => {
         ${currentSection === "contact" ? "clicked" : ""}`}
           onClick={() => onClickSection("contact")}
         >
-          Contacto
+          {getCopy("menu1")}
         </div>
         <div
           className={`menu-section ${
@@ -46,7 +47,7 @@ const Menu = props => {
         ${currentSection === "about" ? "clicked" : ""}`}
           onClick={() => onClickSection("about")}
         >
-          Sobre mí
+          {getCopy("menu2")}
         </div>
       </div>
     </>

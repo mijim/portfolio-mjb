@@ -3,6 +3,7 @@ import rulerulerImg from "../../assets/images/ruleruler.png";
 import "./projects.css";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import { getCopy } from "../../languages/languages";
 
 const BARCU_IMAGES = [
   {
@@ -44,18 +45,8 @@ const Projects = () => {
     <div className="projects-container">
       <div className="projects-section">
         <div className="projects-title">Barcu</div>
-        <div className="projects-text big">
-          Feria 3D de arte virtual con editor para poder subir obras y
-          contenido.
-        </div>
-        <div className="projects-text">
-          Barcu se presenta como un gran reto donde numerosas galerías y
-          artistas debían de poder subir y exponer sus obras. Para dar cabida a
-          tanto contenido de forma dinámica, se optó por crear un editor 3D en
-          linea para que los expositores pudieran presentar de la forma que
-          quisieran y con el formato deseado (imagen, video o archivo 3D) sus
-          trabajos.
-        </div>
+        <div className="projects-text big">{getCopy("projects0")}</div>
+        <div className="projects-text">{getCopy("projects1")}</div>
         <div className="project-image-gallery">
           <ImageGallery
             items={BARCU_IMAGES}
@@ -97,7 +88,7 @@ const Projects = () => {
           />
         </div>
         <div className="projects-tech-stack">
-          <div className="tech-stack-title">Stack tecnológico:</div>
+          <div className="tech-stack-title">{getCopy("projectsStack")}</div>
           <div className="tech-stack-items">
             <div className="tech-stack-item">
               <img src={"/images/react.svg"} alt="react" />
@@ -110,18 +101,8 @@ const Projects = () => {
       </div>
       <div className="projects-section">
         <div className="projects-title">RULERULER</div>
-        <div className="projects-text big">
-          Extensión para el navegador Chrome que permite medir distancias y
-          tamaños así como tipos de fuente de cualquier página o app web.
-        </div>
-        <div className="projects-text">
-          Esta herramienta nace de la necesidad en las empresas de software de
-          realizar QAs visuales para comprobar que los tamaños y tipos de fuente
-          de los distinos elementos se corresponden con el diseño planteado. Su
-          proposito es facilitar esta tarea lo máximo posible ofreciendo una
-          interfaz e interacción lo más parecida a Figma u otros programas de
-          diseño.
-        </div>
+        <div className="projects-text big">{getCopy("projects2")}</div>
+        <div className="projects-text">{getCopy("projects3")}</div>
         <div className="projects-img">
           <img src={rulerulerImg} alt="ruleruler-img" />
           <div className="projects-img__buttons">
@@ -131,7 +112,7 @@ const Projects = () => {
                 rel="noopener noreferrer"
                 href="https://ruleruler.design/"
               >
-                Ver
+                {getCopy("projectsWatch")}
               </a>
             </div>
             <div className="projects-button">
@@ -140,13 +121,13 @@ const Projects = () => {
                 rel="noopener noreferrer"
                 href="https://chrome.google.com/webstore/detail/ruleruler/ghcmdbcpgmkalnkmnnjiehggdgimlmhi"
               >
-                Instalar
+                {getCopy("projectsInstall")}
               </a>
             </div>
           </div>
         </div>
         <div className="projects-tech-stack">
-          <div className="tech-stack-title">Stack tecnológico:</div>
+          <div className="tech-stack-title">{getCopy("projectsStack")}</div>
           <div className="tech-stack-items">
             <div className="tech-stack-item">
               <svg

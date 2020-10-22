@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./contact.css";
 import axios from "axios";
 import Loader from "../../components/loader/loader";
+import { getCopy } from "../../languages/languages";
 
 const Contact = () => {
   const [fields, setFields] = useState({
@@ -42,11 +43,9 @@ const Contact = () => {
       <div className={`contact-container`}>
         {sent ? (
           <>
-            <div className="contact-success">
-              ¡Gracias por ponerte en contacto!
-            </div>
+            <div className="contact-success">{getCopy("contactMsg0")}</div>
             <div className="contact-success-sub">
-              En breve estudiaré tu propuesta y me pondré en contacto contigo.{" "}
+              {getCopy("contactMsg1")}{" "}
               <span role="img" aria-label="emoji">
                 💥👨🏼‍💻
               </span>
@@ -54,12 +53,12 @@ const Contact = () => {
           </>
         ) : (
           <>
-            <div className="contact-title">{"¿Hablamos?"}</div>
+            <div className="contact-title">{getCopy("contactTitle")}</div>
             <div
               className={`contact-input ${fields.name === "" ? "" : "filled"}`}
             >
               <input
-                placeholder="Nombre..."
+                placeholder={getCopy("contactName")}
                 onChange={ev => {
                   handleChange("name", ev.target.value);
                 }}
@@ -81,7 +80,7 @@ const Contact = () => {
               }`}
             >
               <input
-                placeholder="Asunto..."
+                placeholder={getCopy("contactSubject")}
                 onChange={ev => {
                   handleChange("subject", ev.target.value);
                 }}
@@ -91,7 +90,7 @@ const Contact = () => {
               className={`contact-input ${fields.body === "" ? "" : "filled"}`}
             >
               <textarea
-                placeholder="Cuéntame tu idea..."
+                placeholder={getCopy("contactText")}
                 onChange={ev => {
                   handleChange("body", ev.target.value);
                 }}
@@ -108,7 +107,7 @@ const Contact = () => {
               }`}
               onClick={() => handleSend()}
             >
-              Enviar
+              {getCopy("contactButton")}
             </div>
           </>
         )}

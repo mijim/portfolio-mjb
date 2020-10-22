@@ -1,5 +1,6 @@
 import React from "react";
 import "./about.css";
+import { getCopy } from "../../languages/languages";
 
 const About = props => {
   return (
@@ -32,27 +33,15 @@ const About = props => {
       </div>
       <div className="about-text">
         <div className="about-title">{`Software Engineer \n& Front-End DEV`}</div>
-        <div className="colored-b">
-          Ingeniero Informático con especialidad en el desarrollo de software.
-        </div>{" "}
-        Me cautivó la programación desde el principio y he decantado toda mi
-        vida profesional en esta dirección.
+        <div className="colored-b">{getCopy("about0")}</div> {getCopy("about1")}
         <br />
         <br />
-        Pasando por trabajo de investigación en la universidad hasta un par de
-        compañías de software de Madrid, he tenido tenido la oportunidad de
-        trabajar en proyectos con grandes empresas como{" "}
-        <div className="colored-b">Asisa, Samsung o HBO</div> entre otras,
-        adquiriendo así amplios conocimientos en el área de{" "}
-        <div className="colored-b">
-          Front-End y desarrollo de aplicaciones tanto Web como Móvil.
-        </div>
+        {getCopy("about2")} <div className="colored-b">{getCopy("about3")}</div>{" "}
+        {getCopy("about4")} <div className="colored-b">{getCopy("about5")}</div>
         <br />
         <br />
-        Con un gran interés en generar experiencias inmersivas en 3D, mis
-        últimos esfuerzos se han volcado en aprender a crear{" "}
-        <div className="colored-b">entornos virtuales con WebGL</div> que
-        aporten un gran valor al UX.
+        {getCopy("about6")} <div className="colored-b">{getCopy("about7")}</div>{" "}
+        {getCopy("about8")}
       </div>
     </div>
   );
