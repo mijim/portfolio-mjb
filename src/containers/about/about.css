@@ -58,7 +58,7 @@
   display: inline;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .about-container {
     flex-direction: column;
     justify-content: flex-start;
