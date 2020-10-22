@@ -1,16 +1,118 @@
 import React from "react";
 import rulerulerImg from "../../assets/images/ruleruler.png";
 import "./projects.css";
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
+
+const BARCU_IMAGES = [
+  {
+    original: "/images/barcu/barcu1.jpg",
+    thumbnail: "/images/barcu/barcu-thumb1"
+  },
+  {
+    original: "/images/barcu/barcu2.jpg",
+    thumbnail: "/images/barcu/barcu-thumb2.jpg"
+  },
+  {
+    original: "/images/barcu/barcu3.jpg",
+    thumbnail: "/images/barcu/barcu-thumb3.jpg"
+  },
+  {
+    original: "/images/barcu/barcu4.jpg",
+    thumbnail: "/images/barcu/barcu-thumb4.jpg"
+  },
+  {
+    original: "/images/barcu/barcu5.jpg",
+    thumbnail: "/images/barcu/barcu-thumb5.jpg"
+  },
+  {
+    original: "/images/barcu/barcu6.jpg",
+    thumbnail: "/images/barcu/barcu-thumb6.jpg"
+  },
+  {
+    original: "/images/barcu/barcu7.jpg",
+    thumbnail: "/images/barcu/barcu-thumb7.jpg"
+  },
+  {
+    original: "/images/barcu/barcu8.jpg",
+    thumbnail: "/images/barcu/barcu-thumb8.jpg"
+  }
+];
 
 const Projects = () => {
   return (
     <div className="projects-container">
       <div className="projects-section">
+        <div className="projects-title">Barcu</div>
+        <div className="projects-text big">
+          Feria 3D de arte virtual con editor para poder subir obras y
+          contenido.
+        </div>
+        <div className="projects-text">
+          Barcu se presenta como un gran reto donde numerosas galerías y
+          artistas debían de poder subir y exponer sus obras. Para dar cabida a
+          tanto contenido de forma dinámica, se optó por crear un editor 3D en
+          linea para que los expositores pudieran presentar de la forma que
+          quisieran y con el formato deseado (imagen, video o archivo 3D) sus
+          trabajos.
+        </div>
+        <div className="project-image-gallery">
+          <ImageGallery
+            items={BARCU_IMAGES}
+            showThumbnails={false}
+            showPlayButton={false}
+            renderLeftNav={(onClick, disabled) => {
+              return (
+                <div
+                  className="image-gallery-move-arrow"
+                  disabled={disabled}
+                  onClick={onClick}
+                >
+                  <img src={"/images/arrow.svg"} alt="arrow-left" />
+                </div>
+              );
+            }}
+            renderRightNav={(onClick, disabled) => {
+              return (
+                <div
+                  className="image-gallery-move-arrow right"
+                  disabled={disabled}
+                  onClick={onClick}
+                >
+                  <img src={"/images/arrow.svg"} alt="arrow-right" />
+                </div>
+              );
+            }}
+            renderFullscreenButton={(onClick, disabled) => {
+              return (
+                <div
+                  className="image-gallery-fullscreen"
+                  disabled={disabled}
+                  onClick={onClick}
+                >
+                  <img src={"/images/fullscreen.svg"} alt="fullscreen" />
+                </div>
+              );
+            }}
+          />
+        </div>
+        <div className="projects-tech-stack">
+          <div className="tech-stack-title">Stack tecnológico:</div>
+          <div className="tech-stack-items">
+            <div className="tech-stack-item">
+              <img src={"/images/react.svg"} alt="react" />
+            </div>
+            <div className="tech-stack-item">
+              <img src={"/images/three-js-logo.svg"} alt="three.js" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="projects-section">
         <div className="projects-title">RULERULER</div>
         <div className="projects-text big">
-          RULERULER es una extensión para el navegador Chrome que permite medir
-          distancias y tamaños así como tipos de fuente de cualquier página o
-          app web.
+          Extensión para el navegador Chrome que permite medir distancias y
+          tamaños así como tipos de fuente de cualquier página o app web.
         </div>
         <div className="projects-text">
           Esta herramienta nace de la necesidad en las empresas de software de
@@ -65,21 +167,6 @@ const Projects = () => {
               <img src={"/images/js.svg"} alt="js" />
             </div>
           </div>
-        </div>
-      </div>
-      <div className="projects-section">
-        <div className="projects-title">Barcu</div>
-        <div className="projects-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-          consequat elementum risus, vitae rhoncus urna iaculis eu. Donec
-          scelerisque nisl quis ornare efficitur. Vestibulum et nunc nec felis
-          dapibus laoreet id commodo magna. Morbi in ligula in augue bibendum
-          sagittis. Cras in pretium libero. Mauris sit amet euismod orci. Proin
-          ac metus placerat, elementum justo eget, porta ipsum. Cras eget purus
-          vel nisl laoreet suscipit placerat vitae mauris. Integer mollis magna
-          id diam fringilla faucibus. Morbi venenatis ultrices orci sed
-          fermentum. Integer tristique elit nibh, fermentum posuere elit
-          tincidunt nec.
         </div>
       </div>
     </div>
