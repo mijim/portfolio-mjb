@@ -53,6 +53,11 @@
   background: #db4d59;
 }
 
+.colored-b {
+  color: #ecc67e;
+  display: inline;
+}
+
 @media (max-width: 1000px) {
   .about-container {
     flex-direction: column;
