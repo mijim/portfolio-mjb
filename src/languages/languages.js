@@ -39,9 +39,9 @@ const es = {
   about1:
     "Me cautivó la programación desde el principio y he decantado toda mi vida profesional en esta dirección.",
   about2:
-    "Pasando por trabajo de investigación en la universidad hasta un par de compañías de software de Madrid, he tenido tenido la oportunidad de trabajar en proyectos con grandes empresas como",
-  about3: "Asisa, Samsung o HBO",
-  about4: "entre otras, adquiriendo así amplios conocimientos en el área de",
+    "Pasando por trabajo de investigación en la universidad hasta un par de compañías de software de Madrid, he tenido tenido la oportunidad de trabajar en proyectos con grandes empresas internacionales y del tejido empresarial español,",
+  about3: "",
+  about4: "adquiriendo así amplios conocimientos en el área de",
   about5: "Front-End y desarrollo de aplicaciones Web y Móvil.",
   about6:
     "Con un gran interés en generar experiencias inmersivas en 3D, mis últimos esfuerzos se han volcado en aprender a crear",
@@ -86,9 +86,9 @@ const en = {
   about1:
     "I was captivated by programming from the beginning and I have chosen my entire professional life in this direction.",
   about2:
-    "Going through research work at the university to a couple of software companies in Madrid, I have had the opportunity to work on projects with large companies such as",
-  about3: "Asisa, Samsung or HBO",
-  about4: "among others, thus acquiring extensive knowledge in the area of",
+    "Going through research work at the university to a couple of software companies in Madrid, I have had the opportunity to work on projects with large spanish and international companies,",
+  about3: "",
+  about4: "thus acquiring extensive knowledge in the area of",
   about5: "Front-End and Web and Mobile application development.",
   about6:
     "With a great interest in generating immersive 3D experiences, my latest efforts have focused on learning how to create",
@@ -98,7 +98,7 @@ const en = {
 
 export const getCopy = key => {
   if (navigator.language.indexOf("es") > -1) {
-    return es[key];
+    return en[key];
   }
   return en[key];
 };
