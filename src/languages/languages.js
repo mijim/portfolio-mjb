@@ -98,7 +98,7 @@ const en = {
 
 export const getCopy = key => {
   if (navigator.language.indexOf("es") > -1) {
-    return en[key];
+    return es[key];
   }
   return en[key];
 };
