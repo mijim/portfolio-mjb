@@ -58,6 +58,35 @@
   display: inline;
 }
 
+@media (max-width: 1430px) and (max-height: 680px) {
+  .about-image {
+    margin-right: 50px;
+  }
+  .about-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .about-image img {
+    width: 200px;
+    height: 200px;
+  }
+  .about-links img {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
+
+  .about-text {
+    font-size: 16px;
+  }
+
+  .about-title {
+    font-weight: 500;
+    font-size: 24px;
+  }
+}
+
 @media (max-width: 1100px) {
   .about-container {
     flex-direction: column;
