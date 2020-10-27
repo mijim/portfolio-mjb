@@ -98,6 +98,27 @@
   font-size: 28px;
 }
 
+@media (max-height: 720px) {
+  .contact-title {
+    margin-bottom: 30px;
+  }
+  .contact-input {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-height: 640px) {
+  .contact-input textarea {
+    height: 150px;
+  }
+}
+
+@media (max-height: 600px) {
+  .contact-input textarea {
+    height: 80px;
+  }
+}
+
 @media (max-width: 1000px) {
   .contact-container {
     width: 100%;
