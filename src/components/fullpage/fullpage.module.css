@@ -1,0 +1,81 @@
+.fullPanel {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  width: 100%;
+}
+
+.screenPane {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.panelsContainer {
+  position: relative;
+  user-select: none;
+}
+
+.panelsContainer.panelTransitioning {
+  transition: all 1s ease;
+}
+
+.navIndicators {
+  position: fixed;
+  right: 20px;
+  top: 50vh;
+  transform: translateY(-50%);
+}
+
+.indicator {
+  font-size: 1rem;
+  text-align: center;
+  transition: font-size 400ms ease;
+  cursor: pointer;
+  color: #db4d59;
+}
+
+.indicator.active {
+  font-size: 2rem;
+  line-height: 1.5;
+}
+.indicator:hover:not(.active) {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+.clickMask {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 500;
+}
+
+@media screen and (max-width: 1000px) {
+  .fullPanel {
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .screenPane {
+    overflow: auto;
+    height: auto;
+  }
+
+  .panelsContainer {
+    position: static;
+    transition: all 1s ease;
+    /* top: -100vh */
+  }
+
+  .navIndicators {
+    display: none;
+  }
+}

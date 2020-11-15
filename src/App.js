@@ -88,12 +88,13 @@ function App() {
   const [clickedSection, setClickedSection] = useState("");
   const [showSection, setShowSection] = useState(false);
   const [sectionScrollY, setSectionScrollY] = useState(0);
+  const [fullscreenGallery, setFullscreenGallery] = useState(false);
 
   const hoveredGroup = useRef(null);
   const hoveredGroupAux = useRef(null);
 
   useEffect(() => {
-    if (mainScene && window.innerWidth > 1000) {
+    if (false &&mainScene && window.innerWidth > 1000) {
       const loader = new GLTFLoader();
       loader.load("/models/portfolio_scene.gltf", object => {
         mainScene.children.push(object.scene);
@@ -106,6 +107,8 @@ function App() {
     } else if (window.innerWidth <= 1000) {
       setSceneLoaded(true);
     }
+    setSceneLoaded(true);
+
   }, [mainScene]);
 
   useEffect(() => {
@@ -193,6 +196,7 @@ function App() {
         window.innerWidth > 1000 ? 2000 : 800
       );
       setClickedSection(section);
+      setFullscreenGallery(false)
       switch (section) {
         case "projects":
           setViewPosition(projectsPos);
@@ -286,7 +290,11 @@ function App() {
         <div
           className="back-arrow-container"
           onClick={() => {
-            handleClickSection("");
+            if(fullscreenGallery) {
+              setFullscreenGallery(false)
+            } else {
+              handleClickSection("");
+            }
           }}
         >
           <img src={BackArrow} alt="Go back" />
@@ -304,7 +312,7 @@ function App() {
         show={showSection}
         setScrollY={scrollY => setSectionScrollY(scrollY)}
       >
-        {showSection && clickedSection === "projects" && <Projects />}
+        {showSection && clickedSection === "projects" && <Projects fullscreenGallery={fullscreenGallery} setFullscreenGallery={setFullscreenGallery}/>}
         {showSection && clickedSection === "contact" && <Contact />}
         {showSection && clickedSection === "about" && <About />}
       </SectionContainer>

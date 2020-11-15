@@ -22,6 +22,7 @@ const es = {
 
   projectsStack: "Stack tecnológico:",
   projectsWatch: "Ver",
+  projectsWatchGallery: "Ver galería",
   projectsInstall: "Instalar",
 
   contactTitle: "¿Hablamos?",
@@ -71,6 +72,7 @@ const en = {
 
   projectsStack: "Technological stack:",
   projectsWatch: "Watch",
+  projectsWatchGallery: "Watch gallery",
   projectsInstall: "Install",
 
   contactTitle: `Let's get in touch!`,

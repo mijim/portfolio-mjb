@@ -10,6 +10,7 @@
     "axios": "^0.20.0",
     "drei": "^1.5.7",
     "gsap": "^3.5.1",
+    "pure-react-carousel": "^1.27.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-image-gallery": "^1.0.8",
