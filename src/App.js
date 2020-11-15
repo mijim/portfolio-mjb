@@ -94,7 +94,7 @@ function App() {
   const hoveredGroupAux = useRef(null);
 
   useEffect(() => {
-    if (false &&mainScene && window.innerWidth > 1000) {
+    if (mainScene && window.innerWidth > 1000) {
       const loader = new GLTFLoader();
       loader.load("/models/portfolio_scene.gltf", object => {
         mainScene.children.push(object.scene);
@@ -107,7 +107,6 @@ function App() {
     } else if (window.innerWidth <= 1000) {
       setSceneLoaded(true);
     }
-    setSceneLoaded(true);
 
   }, [mainScene]);
 
