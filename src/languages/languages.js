@@ -20,6 +20,28 @@ const es = {
   interfaz e interacción lo más parecida a Figma u otros programas de
   diseño.`,
 
+  projects4: `
+  Landing para productora audiovisual valenciana.
+  `,
+  projects5: `
+  Buscando un diseño donde el reel audiovisual 
+  tuviera un gran peso llegamos a la solución 
+  para Comboi Collective.  Una landing fluida 
+  con fuertes contrastes que mantiene el blanco 
+  y negro como norma primordial.  
+  Así pues, el éxito de esta web radica en la presentación de los elementos de una forma minimalista y contundente.
+  `,  
+  
+  projects6:`
+    Implementación del algoritmo Boids de Craig Reynolds (1986) en Three.js.
+  `,
+  projects7:`
+    Este algoritmo simula el comportamiento que exhiben en bandada algunos 
+    tipos de animales como pájaros, peces o insectos. Basándose en 3 reglas que 
+    estableció Craig Reynolds en 1986 se ha implementado una solución en 3D para Three.js, 
+    añadiendo algunas reglas más y exponiendo los ajustes.
+  `,
+
   projectsStack: "Stack tecnológico:",
   projectsWatch: "Ver",
   projectsWatchGallery: "Ver galería",
@@ -70,9 +92,32 @@ const en = {
   interface and interaction as similar to Figma or other software
   design.`,
 
+  projects4: `
+  Landing for Valencian audiovisual production company.
+  `,
+  projects5: `
+  Looking for a design where the audiovisual reel
+   had a great weight we reached the solution
+   for Comboi Collective. A smooth landing
+   with strong contrasts that keeps the white
+   and black as the primary rule.
+   Thus, the success of this website lies in the 
+   presentation of the elements in a minimalist and forceful way.
+  `,  
+  projects6:`
+    Three.js implementation of the Boids algorithm by Craig Reynolds (1986).
+  `,
+  projects7:`
+    This algorithm simulates the behavior exhibited in flocks by some
+    types of animals such as birds, fish or insects. Based on 3 rules that
+    established Craig Reynolds in 1986 we have implemented a 3D solution for Three.js,
+    adding some more rules and exposing the settings.
+  `,
+
+
   projectsStack: "Technological stack:",
-  projectsWatch: "Watch",
-  projectsWatchGallery: "Watch gallery",
+  projectsWatch: "Visit",
+  projectsWatchGallery: "View gallery",
   projectsInstall: "Install",
 
   contactTitle: `Let's get in touch!`,

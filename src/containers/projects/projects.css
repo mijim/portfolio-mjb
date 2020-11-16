@@ -18,17 +18,48 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 5vh;
 }
 
 .projects-fullscreen-gallery .carousel {
-  width: 65vw;
+  /* margin-left: 10vw; */
+  width: 100vw;
   height: 65vh;
 }
 
 .projects-fullscreen-gallery img {
+  margin-left: 120px;
   object-fit: contain;
-  width: 65vw;
   height: 65vh;
+}
+
+.gallery-control-button {
+  border: 0;
+  background: transparent;
+  position: absolute;
+  bottom: 80px;
+  left: 120px;
+  outline: unset;
+}
+
+.gallery-forward-button {
+  left: 180px;
+  bottom: 78px;
+}
+
+.gallery-back-button {
+  transform: rotate(180deg);
+}
+
+.gallery-control-button:hover img {
+  transform: scale(1.2);
+}
+
+.gallery-control-button img {
+  margin-left: 0;
+  width: 36px;
+  height: 36px;
+  transition: transform 0.1s ease-in;
 }
 
 .projects-section {
@@ -41,7 +72,7 @@
 .projects-title {
   color: #db4d59;
   font-size: 90px;
-  letter-spacing: 6px;
+  letter-spacing: 4px;
   margin-bottom: 32px;
 }
 
@@ -202,7 +233,42 @@
 @media (max-width: 1000px) {
   .projects-container {
     margin-left: 0;
-    /* margin-top: 50px; */
+    margin-top: 50px;
+  }
+  .projects-fullscreen-gallery {
+    padding-top: 0;
+  }
+  .projects-fullscreen-gallery .carousel {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .projects-fullscreen-gallery img {
+    margin-left: 0px;
+    width: 100%;
+    height: auto;
+  }
+
+  .gallery-control-button {
+    border: 0;
+    background: transparent;
+    position: absolute;
+    bottom: 20px;
+    left: calc(50vw - 62px);
+    outline: unset;
+  }
+
+  .gallery-control-button img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .gallery-forward-button {
+    left: calc(50vw + 20px);
+    bottom: 18px;
+  }
+  .gallery-control-button:hover img {
+    transform: scale(1);
   }
   .projects-title {
     font-size: 32px;
@@ -248,6 +314,8 @@
   }
 
   .project-image-gallery {
+    display: flex;
+    justify-content: center;
     width: calc(100vw - 60px);
   }
 
@@ -271,5 +339,14 @@
     z-index: 9;
     bottom: 5px;
     right: 5px;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .projects-fullscreen-gallery .carousel {
+    padding-top: 60vh;
+  }
+
+  .projects-fullscreen-gallery img {
   }
 }
