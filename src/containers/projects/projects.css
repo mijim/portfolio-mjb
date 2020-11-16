@@ -340,6 +340,14 @@
     bottom: 5px;
     right: 5px;
   }
+
+  .tech-stack-title {
+    margin-right: 0;
+  }
+
+  .tech-stack-item {
+    margin-right: 0;
+  }
 }
 
 @media screen and (orientation: portrait) {
