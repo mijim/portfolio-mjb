@@ -67,9 +67,9 @@ const es = {
   about4: "adquiriendo así amplios conocimientos en el área de",
   about5: "Front-End y desarrollo de aplicaciones Web y Móvil.",
   about6:
-    "Con un gran interés en generar experiencias inmersivas en 3D, mis últimos esfuerzos se han volcado en aprender a crear",
-  about7: "entornos virtuales con WebGL",
-  about8: "que aporten un gran valor al UX."
+    "",
+  about7: "",
+  about8: ""
 };
 
 const en = {
@@ -138,9 +138,9 @@ const en = {
   about4: "thus acquiring extensive knowledge in the area of",
   about5: "Front-End and Web and Mobile application development.",
   about6:
-    "With a great interest in generating immersive 3D experiences, my latest efforts have focused on learning how to create",
-  about7: "virtual environments with WebGL",
-  about8: "that add great value to the UX."
+    "",
+  about7: "",
+  about8: ""
 };
 
 export const getCopy = key => {

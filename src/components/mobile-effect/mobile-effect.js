@@ -60,10 +60,27 @@ const material = new THREE.ShaderMaterial({
 
 let increaseTime = 0.01;
 let totalTime = 0;
+let interval = null;
 
 const MobileEffect = props => {
   const { stopAnimation, moveFast } = props;
   const sphereRef = useRef();
+
+  useEffect(() => {
+    clearInterval(interval);
+    interval = setInterval(() => {
+        console.log('yep');
+        if(!moveFast) {
+          sphereRef.current.geometry = new THREE.SphereGeometry(1, Math.floor(Math.random() * 16) + 1, 
+          Math.floor(Math.random() * 16) + 1, 
+          Math.floor(Math.random() * 16) + 1 , 
+          Math.floor(Math.random() * 16) + 1 ,
+          Math.floor(Math.random() * 16) + 1 ,
+          Math.floor(Math.random() * 16) + 1  )
+        }
+      },500);
+  }, [moveFast])
+
   useEffect(() => {
     setInterval(() => {
       totalTime += increaseTime;
@@ -132,6 +149,7 @@ const MobileEffect = props => {
           position={[-0.2, -1.4, 0]}
           material={material}
           scale={[0.7, 0.7, 0.7]}
+          args={[1,4,1, 1]}
         />
         {/* <directionalLight
           color={"#ffffff"}

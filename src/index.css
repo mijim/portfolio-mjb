@@ -22,3 +22,8 @@ code {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+@font-face {
+  font-family: AvenirBold;
+  src: url("/avenir-bold.otf") format("opentype");
+}

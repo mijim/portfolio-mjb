@@ -3,7 +3,7 @@
   /* margin-top: 100px; */
   margin-left: 200px;
   text-align: left;
-  font-family: "Poppins", sans-serif;
+  font-family: AvenirBold, sans-serif;
   overflow: hidden;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .projects-title {
-  color: #db4d59;
+  color: #bababa;
   font-size: 90px;
   letter-spacing: 4px;
   margin-bottom: 32px;
@@ -233,7 +233,7 @@
 @media (max-width: 1000px) {
   .projects-container {
     margin-left: 0;
-    margin-top: 50px;
+    margin-top: 54px;
   }
   .projects-fullscreen-gallery {
     padding-top: 0;
@@ -271,7 +271,7 @@
     transform: scale(1);
   }
   .projects-title {
-    font-size: 32px;
+    font-size: 44px;
     letter-spacing: 2px;
     margin-bottom: 20;
     font-weight: bold;

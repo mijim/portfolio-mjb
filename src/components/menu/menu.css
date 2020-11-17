@@ -5,7 +5,7 @@
   top: 30px;
   padding-right: 12px;
   border-right: 4px solid #db4d59;
-  font-family: "Poppins", sans-serif;
+  font-family: AvenirBold, sans-serif;
   /* letter-spacing: 2px; */
   transition: all 2s ease-in-out;
 }
@@ -26,7 +26,7 @@
 }
 
 .menu-section {
-  font-family: "Poppins", sans-serif;
+  font-family: AvenirBold, sans-serif;
   cursor: pointer;
   line-height: 42px;
   font-size: 32px;
@@ -40,6 +40,7 @@
 .home .menu-section {
   font-size: 72px;
   line-height: 82px;
+  letter-spacing: 2px;
 }
 
 .home .menu-section:hover,
